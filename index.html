@@ -1,0 +1,87 @@
+<!--
+Copyright (c) IBM, Corp. and its affiliates.
+This source code is licensed under the MIT license found in the
+LICENSE file in the root directory of this source tree.
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>AS</title>
+    <meta name="description" content="AS Pontomime" />
+
+    <base href="/" />
+
+    <link rel="icon" href="Images/logo.png" />
+
+    <link rel="manifest" href="manifest.json" />
+
+    <meta name="theme-color" content="#2b2b43" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="AS Pontomime" />
+
+    <link rel="apple-touch-icon" href="images/manifest/icon-192x192.png" />
+    
+
+    <link rel="canonical" href="/" />
+
+    <meta property="og:title" content="AS Pontomime" />
+    <meta property="og:description" content="AS Pontomime" />
+    <meta property="og:image" content="/images/open-graph/cover.png" />
+    <meta property="og:image:alt" content="AS Pontomime" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:url" content="/" />
+
+    <link rel="stylesheet" href="Fonts/Fonts.css">
+
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: #2b2b43;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<script>
+    // Load and register pre-caching Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js', {
+            });
+        });
+    }
+
+    // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+    // https://github.com/reactjs/redux/issues/2907
+    window.process = { env: { NODE_ENV: 'production' } };
+
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+    });
+
+</script>
+
+<body>
+    <app-index></app-index>
+
+    <noscript>لطفا اسکریپت های خود را وارد کنید.</noscript>
+    <script  src="dist/bundle.js"></script>
+</body>
+
+</html>

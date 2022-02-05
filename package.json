@@ -1,0 +1,31 @@
+{
+  "name": "as",
+  "version": "1.0.0",
+  "description": "Pontomime As",
+  "main": "webpack.js",
+  "dependencies": {
+    "@vaadin/router": "^1.7.4",
+    "animate.css": "^4.1.1",
+    "boxicons": "^2.1.1",
+    "css-loader": "^6.5.1",
+    "express": "^4.17.2",
+    "lit": "^2.1.2",
+    "pwa-helper-components": "^0.2.10",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5",
+    "webpack": "^5.67.0"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.2.6",
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "start": "node server/js/app",
+    "bulid_ui": "npx webpack",
+    "bulid_se":"cd server && npx tsc",
+    "bulid_all" : "npm run bulid_se && npm run bulid_ui",
+    "install_se":"cd server && npm i"
+  },
+  "author": "Mohammad Mahdi Moodi",
+  "license": "ISC"
+}
